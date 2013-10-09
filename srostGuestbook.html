@@ -1,0 +1,244 @@
+<head>
+  <title>srost Guestbook</title>
+</head>
+
+<body>
+</body>
+
+  <!--  ================================================== -->
+
+<template name="layout">  
+<div class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+   
+    <a class="navbar-brand" href="{{pathFor 'home'}}">
+      
+      <strong>Срост</strong></a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active" id="Neizbezhen"><a href="{{pathFor 'userlist'}}">Неизбежен</a></li>
+      <li><a class="passive" href="#">Полюбому</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Именно<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Именно да</a></li>
+          <li><a href="#">Именно нет</a></li>
+          <li><a href="#">Именно шо?</a></li>
+          <li><a href="#">Именно де</a></li>
+          <li><a href="#">Де именно ещё</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      {{#if currentUser}}
+        {{> myMessagesButton}} 
+      {{/if}}
+      <li><a href="#">Куда?</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Варики<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Нормальные варики</a></li>
+          <li><a href="#">Такое себе</a></li>
+          <li><a href="#">Шо де/a></li>
+          <li><a href="#">А есть шо-нибудь?</a></li>
+        </ul>
+      </li>
+      {{loginButtons}}
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div>
+<!-- Navbar-нижняя_граница -->
+    <div class="container"> 
+      
+      <div class="row">
+        <div class="col-md-2">
+        	<ul class="nav nav-pills nav-stacked">
+              <li><a href="{{pathFor 'guestbook'}}">Гостевая</a></li>
+              <li><a href="{{pathFor 'otvetstvenno'}}">Ответственно</a></li>
+              <li><a href="#">Старенькие</a></li>
+              <li><a href="#">Подгончики</a></li>
+              <li><a href="#">Наворотики</a></li>
+               
+            </ul>
+            <form class="navbar-form navbar-left " role="search">
+              
+                <input type="text" class="form-control" placeholder="Шо надо?">
+              
+              <button type="submit" class="btn btn-default">Годится</button>
+            </form>
+        </div>
+        <div class="col-md-10">
+          {{yield}}
+        </div>
+      </div>
+    </div>
+   <footer>
+        <p>&copy; ООО Срост 2013</p>
+   </footer>
+</template>
+
+ <template name="home"> 
+      <div class="jumbotron"> 
+             <div class="container">
+               <h1>Срост неизбежен!</h1>
+               <p><span class="glyphicon glyphicon-thumbs-up"></span> Такое мировоззрение превалирует у нормальных пацыков и они 100% правы - потому что даже в то самое время, когда кажется что несрост, он уже накатывает сзади, готовый обрушиться девятым валом прямо тебе на плечи</p>
+               <p><a class="btn btn-default btn-sm">И шо &raquo;</a></p>
+               <div class="built-inForm">
+              {{> form}}
+            </div>
+             </div>
+
+       </div>
+
+           <div class="container">
+             <!-- Example row of columns -->
+             <div class="row">
+              <div class="col-lg-4">
+                 <h2>Ура!!! <span class="glyphicon glyphicon-hand-up"></span></h2>
+                 <p>Реально радостная новость! На нашем нелегальном сайте заработала гостевая! напишите, что вы думаете о сросте</p>
+                 <p><a class="btn btn-default btn-xs" href="{{pathFor 'guestbook'}}">здесь &raquo;</a></p>
+               </div>
+               <div class="col-lg-4">
+                 <h2>Возникновение <span class="glyphicon glyphicon-hand-up"></span></h2>
+                 <p>Появился на харьковских райончиках в эпоху формирования реального подтипа слобожанского диалекта. Являясь квинтэссенцией позитивного типа мышления, позднее плотно вплёлся в кружева местного фольклора и был принят в употребление как нормальными пацанами, так и лохами. Позднее... </p>
+                 <p><a class="btn btn-default btn-xs" href="#">И шо &raquo;</a></p>
+               </div>
+               <div class="col-lg-4">
+                 <h2>Шо это значит <span class="glyphicon glyphicon-question-sign"></span></h2>
+                 <p>Значение:</p>
+                  <ol>
+                    <li>(также во мн.ч.) удача, везение, благоприятное стечение обстоятельств</li>
+                    <li>наречие, выражающее положительное отношение к чему-л.: нормально, хорошо, замечательно, классно, супер и т.д.</li>
+                    <li>приобретение чего-л. или контакт с кем-л. с целью приобретения чего-л.; знакомство с кем-л., обычно с представителем противоположного пола</li>
+                    <li>встреча вообще или встреча группы по интересам</li>
+                    <li>...</li>
+                  </ol>
+                 <p><a class="btn btn-default btn-xs" href="#">И шо &raquo;</a></p>
+              </div>
+              <div class="col-lg-4">
+                 <h2>Шо базарят неместные <span class="glyphicon glyphicon-share-alt"></span></h2>
+                 <ul>
+                   <li><span class="glyphicon glyphicon-share-alt"></span> На самом деле в жизни сросты, МЕГАСРОСТЫ! Поймите, ребята, жизнь такая вещь, что с каждым вдохом хочется жить все больше и больше, несмотря на проблемы! (блог, Самара).</li>
+                   <li><span class="glyphicon glyphicon-share-alt"></span> Прикиньте, седня приходит мне СМС от моих хороших онлайн друзей с предложением о сросте, ну я подумал: «Почему бы и нет?» и поехал (блог, Екатеринбург).</li>
+                   <li><span class="glyphicon glyphicon-share-alt"></span> Фильм понравился, режиссёр старался соригинальничать насыщая фильм самыми извращёнными сценами. Впечатление произвело, минус здесь в том, что все эти фатальные сцены породили кучу мыслей по поводу несростов. Хотя с другой стороны, если бы было всё по сростам, то скорее всего фильм оказался бы предсказуемым (блог, Владивосток).</li>
+                   <li>...</li>
+                 </ul>
+                 <p><a class="btn btn-default btn-xs" href="#">И шо &raquo;</a></p>
+             </div>
+             <div class="col-lg-4">
+                 <h2>Шо базарят местные <span class="glyphicon glyphicon-home"></span></h2>
+                 <ul class="noneListStyle">
+                   <li><span class="glyphicon glyphicon-user"> тебя подтолкнула идея поделиться позитивом с окружающими и не только или вы там просто крепко гаситесь?</li>
+                   <li><span class="glyphicon glyphicon-user"> ткакая ответственная жесть!)</li>
+                   <li></li>
+                   <li>...</li>
+                 </ul>
+                 <p><a class="btn btn-default btn-xs" href="#">И шо &raquo;</a></p>
+          </div>
+      </div>
+ </template>
+
+  <template name="guestbook">
+      {{> form}}
+      <hr>
+      {{> list}}
+ </template>
+
+<template name="otvetstvenno">
+  <div>
+    </span> <h1><span class="glyphicon glyphicon-thumbs-up">  <strong>Ответственно </strong>заявляем о старте нового проекта нелегальной связи для всех психоделических партизан, стареньких , опытных космонавтов и различных эксперементальных людей абсолютно свободной от любого контроля!</h1>
+  </div>
+</template>
+
+  <template name="form">
+  	<div class="formPanel">
+      <form>
+        <h4>что вы думаете о сросте:</h4>
+        <p><textarea class="inputForm" id="textArea"></textarea></p>
+             {{#if currentUser}}
+               {{else}}
+                 {{> signup}} 
+              {{/if}}
+        
+        <p><button class="btn" type="submit" form="data"  id="buttonNew">Вот оно как</button>           Пользуйтесь услугами безопасной связи для своих
+        </p>
+      </form>
+    </div>  
+  </template>
+    
+  <template name="signup">
+        <p><label for="firstName">Имя</label>
+          <input class="inputForm" id="firstName" name="firstName"></p>
+  </template>
+
+  <template name="list">
+  <div >
+   
+  	{{#each posts}}
+    {{> post}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="post">
+  <div >
+    <h4>{{name}}</h4>
+    <p>{{ownPost}}</p> 
+  </div>
+</template>
+
+<template name="userlist">
+  {{#if onclick}}
+    {{> privateMessagePanel}} 
+  {{/if}}
+   <div >
+    {{#each users}}
+    {{> user}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="user">
+  <div >
+    <h4 class="lighted">{{username}}</h4>
+  </div>
+</template>
+
+<template name="myMessagesButton">
+  <li><a href="{{pathFor 'myMessages'}}">myMessages</a></li>
+</template>
+
+<template name="myMessages">
+ <div >
+    {{#each messages}}
+    {{> message}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="message">
+  <div >
+    <h4>{{username}}</h4>
+    <p>{{message}}</p> 
+  </div>
+</template>
+
+  <template name="privateMessagePanel">
+    <div class="formPanel">
+      <form>
+        <h4>Написать сообщение:</h4>
+        <p><textarea class="inputForm" id="messageArea"></textarea></p>
+             {{#if currentUser}}
+               {{else}}
+                 {{> signup}} 
+              {{/if}}
+        
+        <p><button type="submit" form="data"  id="buttonNew">Вот это я и думаю</button></p>
+      </form>
+    </div>  
+  </template>
