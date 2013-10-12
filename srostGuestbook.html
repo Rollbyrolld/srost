@@ -1,5 +1,5 @@
 <head>
-  <title>srost Guestbook</title>
+  <title>Srost</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <li class="active" id="Neizbezhen"><a href="{{pathFor 'userlist'}}">Неизбежен</a></li>
-      <li><a class="passive" href="#">Полюбому</a></li>
+     <!-- <li><a class="passive" href="#">Полюбому</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Именно<b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -31,23 +31,14 @@
           <li><a href="#">Именно де</a></li>
           <li><a href="#">Де именно ещё</a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
     
     <ul class="nav navbar-nav navbar-right">
       {{#if currentUser}}
         {{> myMessagesButton}} 
       {{/if}}
-      <li><a href="#">Куда?</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Варики<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Нормальные варики</a></li>
-          <li><a href="#">Такое себе</a></li>
-          <li><a href="#">Шо де/a></li>
-          <li><a href="#">А есть шо-нибудь?</a></li>
-        </ul>
-      </li>
+      
       {{loginButtons}}
     </ul>
   </div><!-- /.navbar-collapse -->
@@ -60,17 +51,26 @@
         	<ul class="nav nav-pills nav-stacked">
               <li><a href="{{pathFor 'guestbook'}}">Гостевая</a></li>
               <li><a href="{{pathFor 'otvetstvenno'}}">Ответственно</a></li>
-              <li><a href="#">Старенькие</a></li>
+         <!-- <li><a href="#">Старенькие</a></li>
               <li><a href="#">Подгончики</a></li>
               <li><a href="#">Наворотики</a></li>
+              <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Варики<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Нормальные варики</a></li>
+          <li><a href="#">Такое себе</a></li>
+          <li><a href="#">Шо де/a></li>
+          <li><a href="#">А есть шо-нибудь?</a></li>  -->
+        </ul>
+      </li>
                
             </ul>
-            <form class="navbar-form navbar-left " role="search">
+   <!--    <form class="navbar-form navbar-left " role="search">
               
                 <input type="text" class="form-control" placeholder="Шо надо?">
               
-              <button type="submit" class="btn btn-default">Годится</button>
-            </form>
+              <button type="submit" class="btn">Годится</button>
+            </form>  -->
         </div>
         <div class="col-md-10">
           {{yield}}
@@ -85,12 +85,9 @@
  <template name="home"> 
       <div class="jumbotron"> 
              <div class="container">
-               <h1>Срост неизбежен!</h1>
-               <p><span class="glyphicon glyphicon-thumbs-up"></span> Такое мировоззрение превалирует у нормальных пацыков и они 100% правы - потому что даже в то самое время, когда кажется что несрост, он уже накатывает сзади, готовый обрушиться девятым валом прямо тебе на плечи</p>
-               <p><a class="btn btn-default btn-sm">И шо &raquo;</a></p>
-               <div class="built-inForm">
-              {{> form}}
-            </div>
+               <h1>Срост онлайн!</h1>
+               <p><span class="glyphicon glyphicon-thumbs-up"></span>  С РАдостью сообщаю о старте нового проекта нелегальной связи для всех психоделических партизан, стареньких , опытных космонавтов и различных эксперементальных людей абсолютно свободной от любого контроля! Пишите кому угодно без регистрации!  Регистрируйтесь и получайте сообщения для себя. конфиденциальность гарантируется авторитетом производителя</p>
+               <button type="submit" class="btn" href="{{pathFor 'userlist'}}">Нелегальный коннект &raquo;</button>
              </div>
 
        </div>
@@ -98,6 +95,14 @@
            <div class="container">
              <!-- Example row of columns -->
              <div class="row">
+               <div class="col-lg-4">
+                <div class="built-inForm">
+                  {{> form}}
+               </div>
+                 <h2>Срост неизбежен!</h2>
+                 <p><span class="glyphicon glyphicon-thumbs-up"></span> Такое мировоззрение превалирует у нормальных пацыков и они 100% правы - потому что даже в то самое время, когда кажется что несрост, он уже накатывает сзади, готовый обрушиться девятым валом прямо тебе на плечи</p>
+                 <p><a class="btn btn-default btn-xs" href="{{pathFor 'userlist'}}">сростись &raquo;</a></p>
+               </div>
               <div class="col-lg-4">
                  <h2>Ура!!! <span class="glyphicon glyphicon-hand-up"></span></h2>
                  <p>Реально радостная новость! На нашем нелегальном сайте заработала гостевая! напишите, что вы думаете о сросте</p>
@@ -193,9 +198,6 @@
 </template>
 
 <template name="userlist">
-  {{#if onclick}}
-    {{> privateMessagePanel}} 
-  {{/if}}
    <div >
     {{#each users}}
     {{> user}}
@@ -205,12 +207,12 @@
 
 <template name="user">
   <div >
-    <h4 class="lighted">{{username}}</h4>
+    <a href="{{pathFor 'privateMessagePanel'}}"  class="username">{{username}}</a>
   </div>
 </template>
 
 <template name="myMessagesButton">
-  <li><a href="{{pathFor 'myMessages'}}">myMessages</a></li>
+  <li><a href="{{pathFor 'myMessages'}}">Мои Сообщения</a></li>
 </template>
 
 <template name="myMessages">
@@ -223,22 +225,25 @@
 
 <template name="message">
   <div >
-    <h4>{{username}}</h4>
-    <p>{{message}}</p> 
+     <a href="{{pathFor 'privateMessagePanel'}}"  class="username">{{fromName}}</a>
+    <p>{{ownPost}}</p>
+   
   </div>
 </template>
 
   <template name="privateMessagePanel">
     <div class="formPanel">
       <form>
-        <h4>Написать сообщение:</h4>
+        <h4>Написать сообщение для</h4><p>{{username}}</p>
         <p><textarea class="inputForm" id="messageArea"></textarea></p>
              {{#if currentUser}}
                {{else}}
                  {{> signup}} 
               {{/if}}
         
-        <p><button type="submit" form="data"  id="buttonNew">Вот это я и думаю</button></p>
+        <p><button type="submit" form="data"  id="send">Отправить</button></p>
       </form>
     </div>  
   </template>
+
+  

@@ -4,6 +4,7 @@ Router.map(function() {               // карта сайта
   this.route('otvetstvenno');
   this.route('myMessages');
   this.route('userlist');
+  this.route('privateMessagePanel');
 });
 
 Router.configure({             // обьявление главного шаблона

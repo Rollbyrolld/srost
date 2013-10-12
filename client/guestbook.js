@@ -1,3 +1,4 @@
+Session.set('thisUser', null)
 Template.list.posts= function () {
   return Posts.find({}, {sort: {created_on:-1}})  // вывести сообщения в порядке, где последнее по дате выше
 };
@@ -7,10 +8,8 @@ Template.userlist.users= function () {
 };
 
 Template.userlist.events({
-  'click' : function () {
-    //alert("id этого юзера " + this._id);
-    //prompt("Написать " + this.username)
-    return Meteor.user();
+  'click a' : function() {
+    Session.set('thisUser', this)
   }
 })
 
@@ -33,3 +32,33 @@ Template.form.events({
     $('#firstName').val('');             
   }
 });
+
+Template.privateMessagePanel.username = function () {  // это называется хэлпер
+  return Session.get('thisUser').username;
+}
+
+Template.privateMessagePanel.events({
+  'click button#send' : function () {
+    if (!$('#messageArea').val()) {}
+
+    else { 
+       var options = { ownPost: $("#messageArea").val(),
+                       to_id : Session.get('thisUser')._id
+                       };
+      if (Meteor.user()) {
+        options.from_id = Meteor.user()._id;
+        options.fromName = Meteor.user().username;
+              }
+      else {
+        options.fromName = $('#firstName').val();
+      }
+      Messages.insert(options);
+    };
+
+    $('#messageArea').val('');           
+  }
+});
+
+Template.myMessages.messages= function () {
+  return Messages.find({to_id: Meteor.user()._id}, {sort: {created_on:-1}});  
+};

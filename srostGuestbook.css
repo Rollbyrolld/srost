@@ -12,17 +12,25 @@ body {
     border: 1px solid silver;
 	color: silver;
 	font-family: Arial; 
-
+  max-width: 98% !important;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 10px;
+
 }
 
 a {
 	color: silver;
+  
 }
+
 a:hover {
 	color: #F17604 !important;
+  text-decoration: none;
+
+}
+.username {
+  font-size: 1.3em;
 }
 .navbar-brand {
 	background-color: #2F4F4F;
@@ -46,6 +54,9 @@ a:hover {
 	padding-left: 5px;
 	padding-right: 0px;
 }
+.col-md-10 {
+  padding-left: 50px;
+}
 form > button {
 	margin-top: 5px;
 }
@@ -55,7 +66,7 @@ form > button {
 	color: silver;
 	font-family: Arial;
 	border-radius: 5px;
-	margin: none; 
+  max-width: 98% !important;
 }
 .jumbotron {
 	background-color: silver;
@@ -63,14 +74,9 @@ form > button {
 	padding: 0 !important;
 	border: 5px!important;
 }
-/*..container {
-	width: 100%;
-	background-color: #2F4F4F;
-	border-radius: 5px;
-	margin: none;
-}*/
-row {
-	min-height: 200px;
+
+.row {
+	min-height: 2000px;
 }
 .noneListStyle {
 	list-style: none;
@@ -81,6 +87,7 @@ row {
  textarea {
   width: 100%;
   margin-bottom: 5px;
+  border-radius: 5px;
  }
  .form-control {
  	width: 100%;
@@ -89,10 +96,8 @@ footer {
 	float: right;
 	margin-right: 20px;
 }
-.lighted:hover {
+.nameLighted:hover {
   color: #F17604 !important;
   cursor: pointer;
 }
-.built-inForm {
-	float: right;
-}
+
