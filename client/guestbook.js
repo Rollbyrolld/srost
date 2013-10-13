@@ -13,7 +13,7 @@ Template.userlist.events({
   }
 })
 
-Template.form.events({
+Template.buttonToGuestBook.events({
   'click button#buttonNew' : function () {
     if (!$('#textArea').val()) {}
 
@@ -39,10 +39,10 @@ Template.privateMessagePanel.username = function () {  // это называе�
 
 Template.privateMessagePanel.events({
   'click button#send' : function () {
-    if (!$('#messageArea').val()) {}
+    if (!$('#textArea').val()) {}
 
     else { 
-       var options = { ownPost: $("#messageArea").val(),
+       var options = { ownPost: $("#textArea").val(),
                        to_id : Session.get('thisUser')._id
                        };
       if (Meteor.user()) {
@@ -55,9 +55,13 @@ Template.privateMessagePanel.events({
       Messages.insert(options);
     };
 
-    $('#messageArea').val('');           
+    $('#textArea').val('');           
   }
 });
+
+Template.privateMessagePanel.messages= function () {
+  return Messages.find({to_id: Meteor.user()._id, from_id: Session.get('thisUser')._id}, {sort: {created_on:-1}});  
+};
 
 Template.myMessages.messages= function () {
   return Messages.find({to_id: Meteor.user()._id}, {sort: {created_on:-1}});  

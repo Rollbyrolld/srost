@@ -21,18 +21,9 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <li class="active" id="Neizbezhen"><a href="{{pathFor 'userlist'}}">Неизбежен</a></li>
-     <!-- <li><a class="passive" href="#">Полюбому</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Именно<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Именно да</a></li>
-          <li><a href="#">Именно нет</a></li>
-          <li><a href="#">Именно шо?</a></li>
-          <li><a href="#">Именно де</a></li>
-          <li><a href="#">Де именно ещё</a></li>
-        </ul>
-      </li> -->
-    </ul>
+      <li><a href="{{pathFor 'guestbook'}}">Гостевая</a></li>
+      <li><a href="{{pathFor 'otvetstvenno'}}">Ответственно</a></li>
+  </ul>
     
     <ul class="nav navbar-nav navbar-right">
       {{#if currentUser}}
@@ -45,34 +36,9 @@
 </div>
 <!-- Navbar-нижняя_граница -->
     <div class="container"> 
-      
       <div class="row">
-        <div class="col-md-2">
-        	<ul class="nav nav-pills nav-stacked">
-              <li><a href="{{pathFor 'guestbook'}}">Гостевая</a></li>
-              <li><a href="{{pathFor 'otvetstvenno'}}">Ответственно</a></li>
-         <!-- <li><a href="#">Старенькие</a></li>
-              <li><a href="#">Подгончики</a></li>
-              <li><a href="#">Наворотики</a></li>
-              <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Варики<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Нормальные варики</a></li>
-          <li><a href="#">Такое себе</a></li>
-          <li><a href="#">Шо де/a></li>
-          <li><a href="#">А есть шо-нибудь?</a></li>  -->
-        </ul>
-      </li>
-               
-            </ul>
-   <!--    <form class="navbar-form navbar-left " role="search">
-              
-                <input type="text" class="form-control" placeholder="Шо надо?">
-              
-              <button type="submit" class="btn">Годится</button>
-            </form>  -->
-        </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
+          {{> textarea}}
           {{yield}}
         </div>
       </div>
@@ -83,6 +49,7 @@
 </template>
 
  <template name="home"> 
+  {{> buttonToGuestBook}}
       <div class="jumbotron"> 
              <div class="container">
                <h1>Срост онлайн!</h1>
@@ -96,9 +63,6 @@
              <!-- Example row of columns -->
              <div class="row">
                <div class="col-lg-4">
-                <div class="built-inForm">
-                  {{> form}}
-               </div>
                  <h2>Срост неизбежен!</h2>
                  <p><span class="glyphicon glyphicon-thumbs-up"></span> Такое мировоззрение превалирует у нормальных пацыков и они 100% правы - потому что даже в то самое время, когда кажется что несрост, он уже накатывает сзади, готовый обрушиться девятым валом прямо тебе на плечи</p>
                  <p><a class="btn btn-default btn-xs" href="{{pathFor 'userlist'}}">сростись &raquo;</a></p>
@@ -149,14 +113,14 @@
  </template>
 
   <template name="guestbook">
-      {{> form}}
-      <hr>
+      {{> buttonToGuestBook}}
       {{> list}}
  </template>
 
 <template name="otvetstvenno">
+  {{> buttonToGuestBook}} 
   <div>
-    </span> <h1><span class="glyphicon glyphicon-thumbs-up">  <strong>Ответственно </strong>заявляем о старте нового проекта нелегальной связи для всех психоделических партизан, стареньких , опытных космонавтов и различных эксперементальных людей абсолютно свободной от любого контроля!</h1>
+    <span class="glyphicon glyphicon-thumbs-up"></span> <h1>  <strong>Ответственно </strong>заявляем о старте нового проекта нелегальной связи для всех психоделических партизан, стареньких , опытных космонавтов и различных эксперементальных людей абсолютно свободной от любого контроля!</h1>
   </div>
 </template>
 
@@ -198,6 +162,8 @@
 </template>
 
 <template name="userlist">
+  <h3>Выбрать собеседника</h3>
+  <hr>
    <div >
     {{#each users}}
     {{> user}}
@@ -216,6 +182,9 @@
 </template>
 
 <template name="myMessages">
+  <h3>Мои сообщения</h3>
+  <p>выберите пользователя</p>
+  <hr>
  <div >
     {{#each messages}}
     {{> message}}
@@ -227,23 +196,40 @@
   <div >
      <a href="{{pathFor 'privateMessagePanel'}}"  class="username">{{fromName}}</a>
     <p>{{ownPost}}</p>
-   
+
   </div>
 </template>
 
   <template name="privateMessagePanel">
     <div class="formPanel">
       <form>
-        <h4>Написать сообщение для</h4><p>{{username}}</p>
-        <p><textarea class="inputForm" id="messageArea"></textarea></p>
              {{#if currentUser}}
                {{else}}
                  {{> signup}} 
               {{/if}}
-        
         <p><button type="submit" form="data"  id="send">Отправить</button></p>
+        <p>Написать сообщение для</p><p>{{username}}</p>
+      </form>
+    </div> 
+    {{#each messages}}
+    {{> message}}
+    {{/each}} 
+  </template>  
+
+  <template name="textarea">
+    <div class="formPanel">
+      <form>
+        <p><textarea class="inputForm" id="textArea"></textarea></p>
+             {{#if currentUser}}
+               {{else}}
+                 {{> signup}} 
+              {{/if}}
       </form>
     </div>  
   </template>
 
-  
+  <template name="buttonToGuestBook">
+    <p><button class="btn" type="submit" form="data"  id="buttonNew">Вот оно как</button>           Написать в гостевую
+    </p>
+    <hr>
+  </template>

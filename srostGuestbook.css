@@ -46,16 +46,9 @@ a:hover {
 .navbar-form {
 	padding: 0;
 }
-#Neizbezhen:hover {                       //не работает
-	color: red !important;
-} 
-.col-md-2 {
-	padding-top: 10px;
-	padding-left: 5px;
-	padding-right: 0px;
-}
-.col-md-10 {
-  padding-left: 50px;
+.col-md-12 {
+  padding-left: 25px;
+  padding-right: 25px;
 }
 form > button {
 	margin-top: 5px;
@@ -88,6 +81,7 @@ form > button {
   width: 100%;
   margin-bottom: 5px;
   border-radius: 5px;
+  margin-top: 10px;
  }
  .form-control {
  	width: 100%;
