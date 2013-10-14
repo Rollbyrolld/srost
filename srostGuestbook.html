@@ -54,7 +54,7 @@
              <div class="container">
                <h1>Срост онлайн!</h1>
                <p><span class="glyphicon glyphicon-thumbs-up"></span>  С РАдостью сообщаю о старте нового проекта нелегальной связи для всех психоделических партизан, стареньких , опытных космонавтов и различных эксперементальных людей абсолютно свободной от любого контроля! Пишите кому угодно без регистрации!  Регистрируйтесь и получайте сообщения для себя. конфиденциальность гарантируется авторитетом производителя</p>
-               <button type="submit" class="btn" href="{{pathFor 'userlist'}}">Нелегальный коннект &raquo;</button>
+              <p><a class="btn" href="{{pathFor 'userlist'}}">Нелегальный коннект &raquo;</a></p>
              </div>
 
        </div>
@@ -173,7 +173,7 @@
 
 <template name="user">
   <div >
-    <a href="{{pathFor 'privateMessagePanel'}}"  class="username">{{username}}</a>
+    <a href="{{pathFor 'privateMessagePanel' _id=this._id}}"  class="username">{{username}}</a>
   </div>
 </template>
 
@@ -194,7 +194,7 @@
 
 <template name="message">
   <div >
-     <a href="{{pathFor 'privateMessagePanel'}}"  class="username">{{fromName}}</a>
+     <a href="{{pathFor 'privateMessagePanel' _id=from_id}}"  class="username">{{fromName}}</a>
     <p>{{ownPost}}</p>
 
   </div>
@@ -208,8 +208,9 @@
                  {{> signup}} 
               {{/if}}
         <p><button type="submit" form="data"  id="send">Отправить</button></p>
-        <p>Написать сообщение для</p><p>{{username}}</p>
+        <p>Написать сообщение для {{username}}</p>
       </form>
+    <hr>
     </div> 
     {{#each messages}}
     {{> message}}

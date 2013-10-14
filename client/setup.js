@@ -4,7 +4,10 @@ Router.map(function() {               // карта сайта
   this.route('otvetstvenno');
   this.route('myMessages');
   this.route('userlist');
-  this.route('privateMessagePanel');
+  this.route('privateMessagePanel',{
+    path: '/users/:_id',
+    data: function() {return Meteor.users.findOne(this.params._id);}
+  });
 });
 
 Router.configure({             // обьявление главного шаблона
