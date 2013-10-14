@@ -19,6 +19,12 @@ body {
 
 }
 
+#fatContainer {
+  border: 3px solid silver;
+  max-width: 98% !important;
+  margin-bottom: 10px;
+} 
+
 a {
 	color: silver;
   
