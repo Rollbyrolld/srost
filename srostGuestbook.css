@@ -2,9 +2,7 @@
 body {
     background-color: black;
     font-family: Arial;
-    color: silver;
-    
-    
+    color: silver;  
 }
 
 .navbar {
@@ -16,10 +14,29 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 10px;
-
 }
 
-#fatContainer {
+.Srost {
+  color: #F17604 !important;
+}
+
+/*Neizbezhen {
+  color: gray !important;
+}*/
+/*.row {
+  max-width: 98% !important;
+}*/
+
+.navbar a {
+  color: silver !important;
+}
+
+
+/*.navbar-default .navbar-nav>li>a {
+  color:  silver !important; */
+}
+
+#FatConteiner {
   border: 3px solid silver;
   max-width: 98% !important;
   margin-bottom: 10px;
@@ -52,10 +69,17 @@ a:hover {
 .navbar-form {
 	padding: 0;
 }
-.col-md-12 {
+.col-md-10 {
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.col-md-2 {
+  padding-left: 25px;
+  padding-right: 25px;
+  min-height: 2000px !important;
+}
+
 form > button {
 	margin-top: 5px;
 }
@@ -65,8 +89,19 @@ form > button {
 	color: silver;
 	font-family: Arial;
 	border-radius: 5px;
-  max-width: 98% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
 }
+.BigContainer {
+  background-color: #2F4F4F;
+  border: 1px solid silver;
+  color: silver;
+  font-family: Arial;
+  border-radius: 5px;
+  max-width: 98% !important;
+  margin-left: auto;
+  margin-right: auto;
+} 
 .jumbotron {
 	background-color: silver;
 	margin-top: 10px;
@@ -101,3 +136,20 @@ footer {
   cursor: pointer;
 }
 
+.carousel-caption {
+  position: relative;
+}
+
+.carousel-inner img {
+  margin: auto;
+  
+}
+
+.carousel {
+  overflow: visible !important;
+}
+
+.imagewiever {
+  display: inline-block;
+  margin: auto;
+}
