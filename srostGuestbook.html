@@ -23,7 +23,7 @@
       <li><a href="{{pathFor 'userlist'}}">Неизбежен</a></li>
       <li><a href="{{pathFor 'guestbook'}}">Гостевая</a></li>
       <li><a href="{{pathFor 'otvetstvenno'}}">Ответственно</a></li>
-      <li><a href="{{pathFor 'imagewiever'}}">Картинки</a></li>
+      <li><a href="{{pathFor 'carousel'}}">Картинки</a></li>
       <li><a href="{{pathFor 'imageLoader'}}">img</a></li>
   </ul>
     
@@ -346,12 +346,10 @@
     
   <template name="imageLoader">
     <form>
-      <label for="imageCollection">Введите имя коллекции</label>
-        <input class="inputForm" id="imageCollection" name="imageCollection"></p>
-      <label for="image">Введите адрес картинки</label>
-        <input class="inputForm" id="image" name="image"></p>
-      <label for="imageNote">Название картинки</label>
-        <input class="inputForm" id="imageNote" name="imageNote"></p>
+        <p><input class="inputForm" id="imageCollection" name="imageCollection" placeholder="Имя коллекции"></p>
+        <p><input class="inputForm" id="image" name="image" placeholder="URL картинки">{{noimage}}</p>
+        <p><input class="inputForm" id="imageNote" name="imageNote" placeholder="Название картинки"></p>
+
       <button class="btn" type="submit" form="data"  id="imgSend">Отправить</button>
     </form>
   </template>

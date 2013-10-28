@@ -33,9 +33,9 @@ Template.buttonToGuestBook.events({
   }
 });
 
-Template.privateMessagePanel.username = function () {  // это называется хэлпер
+/*Template.privateMessagePanel.username = function () {  // это называется хэлпер
   return Session.get('thisUser').username;
-}
+}*/
 
 Template.privateMessagePanel.events({
   'click button#send' : function () {
@@ -60,8 +60,8 @@ Template.privateMessagePanel.events({
 });
 
 Template.privateMessagePanel.messages= function () {
-  return Messages.find({to_id: Meteor.user()._id, from_id: Session.get('thisUser')._id}, {sort: {created_on:-1}});  
-};
+  return Messages.find({$or: [{to_id: Meteor.user()._id, from_id: this._id }, {to_id: this._id, from_id: Meteor.user()._id }]}, {sort: {created_on:-1}}); 
+}; 
 
 Template.myMessages.messages= function () {
   return Messages.find({to_id: Meteor.user()._id}, {sort: {created_on:-1}});  
