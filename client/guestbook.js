@@ -1,4 +1,4 @@
-Session.set('thisUser', null)
+/*Session.set('thisUser', null)*/
 Template.list.posts= function () {
   return Posts.find({}, {sort: {created_on:-1}})  // вывести сообщения в порядке, где последнее по дате выше
 };
@@ -43,7 +43,7 @@ Template.privateMessagePanel.events({
 
     else { 
        var options = { ownPost: $("#textArea").val(),
-                       to_id : Session.get('thisUser')._id
+                       to_id : this._id
                        };
       if (Meteor.user()) {
         options.from_id = Meteor.user()._id;
@@ -59,10 +59,43 @@ Template.privateMessagePanel.events({
   }
 });
 
+Template.imageLoader.events({
+  'click button#imgSend' : function () {
+    if (!$('#imageURL').val()) {
+      alert("No image URL");
+    }
+
+    else { 
+      var options = { imageURL: $("#imageURL").val(),
+                      imageClass: function () {
+                        if (Images.findOne({imageCollection: $("#imageCollection").val()})) {
+                          alert("item");
+                          return "item";
+                        } 
+                        else {
+                          alert("item active");
+                          return "item active";
+                        }                    
+                      },
+                      imageCollection: $("#imageCollection").val(),
+                      imageNote: $("#imageNote").val(),              // image id?
+                      
+                    };
+      Images.insert(options);
+    };      
+    $('#imageURL').val('');   
+    $('#imageNote').val('');       
+  }
+});
+
 Template.privateMessagePanel.messages= function () {
   return Messages.find({$or: [{to_id: Meteor.user()._id, from_id: this._id }, {to_id: this._id, from_id: Meteor.user()._id }]}, {sort: {created_on:-1}}); 
 }; 
 
 Template.myMessages.messages= function () {
   return Messages.find({to_id: Meteor.user()._id}, {sort: {created_on:-1}});  
+};
+
+Template.carousel.images= function () {
+  return Images.find({imageCollection: "2"});  
 };
