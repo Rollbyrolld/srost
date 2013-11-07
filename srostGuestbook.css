@@ -503,6 +503,7 @@ form > button {
 	border-radius: 5px;
   max-width: 100% !important;
   overflow: visible !important;
+  margin: 10px !important;
 }
 .BigContainer {
   background-color: #2F4F4F;
