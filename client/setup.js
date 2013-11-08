@@ -28,13 +28,13 @@ Router.map(function() {               // карта сайта
 
   this.route('myMessages');
 
-  this.route('carousel');
+  //this.route('carousel');
 
   this.route('userlist');
   
-  this.route('imagewiever');
+  //this.route('imagewiever');
 
-  this.route('imageLoader');
+  //this.route('imageLoader');
 
   this.route('privateMessagePanel',{
     path: '/users/:_id',

@@ -59,7 +59,7 @@ Template.privateMessagePanel.events({
   }
 });
 
-Template.imageLoader.events({
+/*Template.imageLoader.events({
   'click button#imgSend' : function () {
     if (!$('#imageURL').val()) {
       alert("No image URL");
@@ -86,7 +86,7 @@ Template.imageLoader.events({
     $('#imageURL').val('');   
     $('#imageNote').val('');       
   }
-});
+});*/
 
 Template.privateMessagePanel.messages= function () {
   return Messages.find({$or: [{to_id: Meteor.user()._id, from_id: this._id }, {to_id: this._id, from_id: Meteor.user()._id }]}, {sort: {created_on:-1}}); 
@@ -96,6 +96,6 @@ Template.myMessages.messages= function () {
   return Messages.find({to_id: Meteor.user()._id}, {sort: {created_on:-1}});  
 };
 
-Template.carousel.images= function () {
+/*Template.carousel.images= function () {
   return Images.find({imageCollection: "2"});  
-};
+};*/

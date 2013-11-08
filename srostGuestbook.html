@@ -23,8 +23,8 @@
       <li><a href="{{pathFor 'userlist'}}">Неизбежен</a></li>
       <li><a href="{{pathFor 'guestbook'}}">Гостевая</a></li>
       <li><a href="{{pathFor 'otvetstvenno'}}">Ответственно</a></li>
-      <li><a href="{{pathFor 'carousel'}}">Картинки</a></li>
-      <li><a href="{{pathFor 'imageLoader'}}">img</a></li>
+      <!-- <li><a href="{{pathFor 'carousel'}}">Картинки</a></li>
+      <li><a href="{{pathFor 'imageLoader'}}">img</a></li> -->
   </ul>
     
     <ul class="nav navbar-nav navbar-right">
@@ -273,14 +273,16 @@
     </div>
     {{> thumbnails}}
   </template> -->
-<template name="carousel">
-<div id="carousel-example-generic" class="carousel"  data-interval=false>
+
+
+<!-- <template name="carousel">
+<div id="carousel-example-generic" class="carousel"  data-interval=false> -->
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
+  <!-- <div class="carousel-inner">
     {{#each images}}
     {{> image}}
-    {{/each}} 
+    {{/each}}   -->  
 
    <!-- <div class="item active">
       <img src="1.jpg" alt="...">
@@ -305,19 +307,19 @@
         <p></p>
       </div>
     </div>  -->     
-  </div>
+  <!-- </div>  --> 
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+  <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
     <span class="icon-prev"></span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
     <span class="icon-next"></span>
   </a>
 </div>
-</template>
+</template> -->
 
-<template name="image">
+<!--<template name="image">
  <div class={{imageClass}}>
     <img src={{imageURL}} alt="...">
     <div class="carousel-caption">
@@ -325,7 +327,7 @@
       <p>{{imageNote}}</p>
     </div>
   </div>
-</template> 
+</template>  -->
 
 <!-- <template name="thumbnails">
   <ul class="thumbnails">
@@ -343,7 +345,7 @@
 
  
     
-  <template name="imageLoader">
+  <!-- <template name="imageLoader">
     <form>
         <p><input class="inputForm" id="imageCollection" name="imageCollection" placeholder="Имя коллекции"></p>
         <p><input class="inputForm" id="imageURL" name="image" placeholder="URL картинки">{{noimage}}</p>
@@ -363,4 +365,4 @@
     <div class="imagewiever">
       <span class="glyphicon glyphicon-share-alt"></span>
     </div>
-  </template>
+  </template> -->
