@@ -95,7 +95,3 @@ Template.privateMessagePanel.messages= function () {
 Template.myMessages.messages= function () {
   return Messages.find({to_id: Meteor.user()._id}, {sort: {created_on:-1}});  
 };
-
-/*Template.carousel.images= function () {
-  return Images.find({imageCollection: "2"});  
-};*/
